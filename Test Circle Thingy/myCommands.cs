@@ -40,7 +40,14 @@ namespace Test_Circle_Thingy
 
             using (Transaction tr = Active.Database.TransactionManager.StartTransaction())
             {
-                
+                Circle circle = new Circle(pt, Vector3d.ZAxis, dist);
+
+                BlockTableRecord btr = (BlockTableRecord) tr.GetObject(Active.Database.CurrentSpaceId, OpenMode.ForWrite);
+
+                btr.AppendEntity(circle);
+                tr.AddNewlyCreatedDBObject(circle, true);
+
+                tr.Commit();
             }
         }
     }
