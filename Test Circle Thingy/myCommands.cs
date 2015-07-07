@@ -16,6 +16,8 @@ namespace Test_Circle_Thingy
         [CommandMethod("MyCommand")]
         public void MyCommand() // This method can have any name
         {
+            Active.Editor.WriteMessage("\nThis will add a circle to the current space!");
+
             // Put your command code here
             PromptPointOptions ppo = new PromptPointOptions("Pick the centre of the circle");
             PromptPointResult ppr = Active.Editor.GetPoint(ppo);
@@ -40,7 +42,14 @@ namespace Test_Circle_Thingy
 
             using (Transaction tr = Active.Database.TransactionManager.StartTransaction())
             {
-                
+                Circle circle = new Circle(pt, Vector3d.ZAxis, dist);
+
+                BlockTableRecord btr = (BlockTableRecord) tr.GetObject(Active.Database.CurrentSpaceId, OpenMode.ForWrite);
+
+                btr.AppendEntity(circle);
+                tr.AddNewlyCreatedDBObject(circle, true);
+
+                tr.Commit();
             }
         }
     }
