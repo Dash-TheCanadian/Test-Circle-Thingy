@@ -16,6 +16,8 @@ namespace Test_Circle_Thingy
         [CommandMethod("MyCommand")]
         public void MyCommand() // This method can have any name
         {
+            Active.Editor.WriteMessage("\nThis will add a circle to the current space!");
+
             // Put your command code here
             PromptPointOptions ppo = new PromptPointOptions("Pick the centre of the circle");
             PromptPointResult ppr = Active.Editor.GetPoint(ppo);
