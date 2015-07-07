@@ -87,6 +87,10 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="C:\Users\loekar01\Documents\Visual Studio 2013\Projects\Toolbox\Toolbox\Toolbox.csproj">
+      <Project>{d3e0e30e-a99d-473c-9623-9c91f1683ea0}</Project>
+      <Name>Toolbox</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="myCommands.Designer.cs">
